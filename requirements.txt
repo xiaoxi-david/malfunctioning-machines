@@ -1,4 +1,6 @@
-pandas==1.2.*
-matplotlib==3.4.*
-wordcloud==1.2.*
-ipykernel==5.5.*
+pandas
+matplotlib
+wordcloud
+ipykernel
+tensorflow
+tensorflow-datasets
