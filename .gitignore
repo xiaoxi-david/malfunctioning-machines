@@ -23,3 +23,6 @@ dmypy.json
 
 # dataset
 dataset/
+
+# VS Code settings
+.vscode/

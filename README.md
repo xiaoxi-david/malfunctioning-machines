@@ -1,1 +1,1 @@
-# malfuctioning-machines
+# Anomaly sound detection in industrial machines
