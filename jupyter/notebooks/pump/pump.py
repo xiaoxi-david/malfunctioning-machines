@@ -54,14 +54,16 @@ class Pump(tfds.core.GeneratorBasedBuilder):
             features=tfds.features.FeaturesDict(
                 {
                     "audio": tfds.features.Audio(
-                        file_format="wav", sample_rate=16000
+                        file_format="wav", sample_rate=16_000, shape=(160_000,)
+                    ),
+                    "audio/id": tfds.features.Text(),
+                    "audio/machine": tfds.features.Text(),
+                    "audio/split": tfds.features.ClassLabel(
+                        names=["train", "test"]
                     ),
                     "label": tfds.features.ClassLabel(
                         names=["normal", "anomaly"]
                     ),
-                    "split": tfds.features.Text(),
-                    "machine_id": tfds.features.Text(),
-                    "audio_id": tfds.features.Text(),
                 }
             ),
             supervised_keys=("audio", "label"),
@@ -95,9 +97,9 @@ class Pump(tfds.core.GeneratorBasedBuilder):
                     split, label, machine_id, audio_id = info.groups()
                     example = {
                         "audio": path,
+                        "audio/id": audio_id,
+                        "audio/machine": machine_id,
+                        "audio/split": split,
                         "label": label,
-                        "split": split,
-                        "machine_id": machine_id,
-                        "audio_id": audio_id,
                     }
                     yield idx, example
