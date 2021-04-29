@@ -9,4 +9,27 @@ services:
     volumes:
       - ./jupyter/notebooks:/notebooks
       - ./jupyter/dataset:/dataset
-    command: jupyter notebook --port=8888 --no-browser --ip=0.0.0.0 --allow-root
+    command: 
+      [
+        "jupyter",
+        "notebook",
+        "--port=8888",
+        "--no-browser",
+        "--ip=0.0.0.0",
+        "--allow-root"
+      ]
+
+  tensorboard:
+    image: tensorboard
+    build: ./tensorboard
+    ports:
+        - 6006:6006
+    volumes:
+        - ./jupyter/logs:/logs
+    command:
+        [
+          "tensorboard",
+          "--logdir=/logs",
+          "--port=6006",
+          "--bind_all",
+        ]
