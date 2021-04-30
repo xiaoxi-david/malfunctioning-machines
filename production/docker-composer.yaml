@@ -1,0 +1,38 @@
+version: "3.9"
+services:
+  frontend:
+    container_name: streamlit
+    restart: always
+    build: ./frontend
+    ports:
+      - 5000:8501
+    volumes:
+      - ./frontend/src:/streamlit
+      - ./media:/media
+    depends_on:
+      - backend
+    networks:
+      - ml-network
+    command:
+      [
+        "streamlit",
+        "run",
+        "streamlit/app.py"
+      ]
+
+  backend:
+    image: tensorflow/serving:latest
+    container_name: tf-serving
+    ports:
+      - 8500:8500
+      - 8501:8501
+    volumes:
+      - ./backend/models/mel:/models/mel
+      - ./backend/models/stft:/models/stft
+      - ./backend/config:/models
+    command: --model_config_file=/models/models.config
+    networks:
+      - ml-network
+
+networks:
+  ml-network:

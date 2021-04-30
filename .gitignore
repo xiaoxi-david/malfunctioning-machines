@@ -26,3 +26,5 @@ dataset/
 
 # VS Code settings
 .vscode/
+
+logs/

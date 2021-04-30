@@ -1,0 +1,9 @@
+pandas
+matplotlib
+wordcloud
+ipykernel
+tensorflow
+tensorflow-datasets
+pydub
+librosa
+kapre
