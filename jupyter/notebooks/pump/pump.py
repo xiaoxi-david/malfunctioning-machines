@@ -34,8 +34,7 @@ _CITATION = """
 
 
 _HOMEPAGE_URL = "https://zenodo.org/record/3678171"
-# _DOWNLOAD_URL = "https://zenodo.org/record/3678171/files/dev_data_pump.zip" # ? Whole dataset
-_DOWNLOAD_URL = "https://drive.google.com/uc?export=download&id=1gw6IDLkl-syb3SbudNruPIckTrwhXHMV"  # TODO: Change. Subset of dataset
+_DOWNLOAD_URL = "https://zenodo.org/record/3678171/files/dev_data_pump.zip"
 
 
 class Pump(tfds.core.GeneratorBasedBuilder):
@@ -58,12 +57,8 @@ class Pump(tfds.core.GeneratorBasedBuilder):
                     ),
                     "audio/id": tfds.features.Text(),
                     "audio/machine": tfds.features.Text(),
-                    "audio/split": tfds.features.ClassLabel(
-                        names=["train", "test"]
-                    ),
-                    "label": tfds.features.ClassLabel(
-                        names=["normal", "anomaly"]
-                    ),
+                    "audio/split": tfds.features.ClassLabel(names=["train", "test"]),
+                    "label": tfds.features.ClassLabel(names=["normal", "anomaly"]),
                 }
             ),
             supervised_keys=("audio", "label"),
@@ -76,12 +71,8 @@ class Pump(tfds.core.GeneratorBasedBuilder):
         path = dl_manager.download_and_extract(_DOWNLOAD_URL)
 
         return {
-            "train": self._generate_examples(
-                os.path.join(path, "pump", "train")
-            ),
-            "test": self._generate_examples(
-                os.path.join(path, "pump", "test")
-            ),
+            "train": self._generate_examples(os.path.join(path, "pump", "train")),
+            "test": self._generate_examples(os.path.join(path, "pump", "test")),
         }
 
     def _generate_examples(self, path):

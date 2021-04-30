@@ -6,3 +6,4 @@ tensorflow
 tensorflow-datasets
 pydub
 librosa
+kapre

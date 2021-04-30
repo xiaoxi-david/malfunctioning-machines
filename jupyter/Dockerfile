@@ -12,6 +12,7 @@ RUN pip install jupyter \
     tensorflow \
     tensorflow-datasets \
     pydub \
-    librosa
+    librosa \
+    kapre
 
 WORKDIR /notebooks
