@@ -1,34 +1,58 @@
 import os
 import re
 from typing import List, Tuple
+from glob import glob
 
 
-def get_files(split: str) -> List[str]:  # TODO: Finish it
-    dir_root = os.path.join("..", "media", "audios")
-    return [
-        os.path.join(dir_root, "anomaly_id_00_00000000.wav"),
-        os.path.join(dir_root, "anomaly_id_00_00000001.wav"),
-        os.path.join(dir_root, "anomaly_id_00_00000002.wav"),
-        os.path.join(dir_root, "anomaly_id_00_00000003.wav"),
-    ]
-
-
-def get_train_files(machine_id: str) -> List[str]:  # TODO: Finish it
-    return get_files("train")
+def get_train_files(machine_id: str) -> List[str]:
+    fname_lst = glob(
+        os.path.join(
+            "..", "store", "audios", "train", f"normal_id_{machine_id}_*"
+        )
+    )
+    return fname_lst[:8]
 
 
 def get_test_files() -> List[str]:  # ? Not used yet
-    return get_files("test")
+    fname_lst = []
+    for machine_id in ["00", "02", "04", "06"]:
+        for label in ["normal", "anomaly"]:
+            fnames = glob(
+                os.path.join(
+                    "..",
+                    "store",
+                    "audios",
+                    "test",
+                    f"{label}_id_{machine_id}_*",
+                )
+            )
+
+            fname_lst.append(fnames[0])
+            fname_lst.append(fnames[1])
+
+    return fname_lst
 
 
-def get_feature_img(fname: str) -> str:
+def get_support_file(fname: str, folder: str) -> str:
     parts = fname.split(os.path.sep)
-    fname = f"{parts[-1][:-4]}.png"
-    dir_root = os.path.join("..", "media", "images")
-    return os.path.join(dir_root, fname)
+    dir_root = os.path.join(parts[0], parts[1], folder, parts[3])
+    label, machine_id, audio_id = get_info(parts[4])
+    if folder == "images":
+        name = f"{label}_id_{machine_id}_0000{audio_id}.png"
+    elif folder == "json":
+        name = f"{label}_id_{machine_id}_0000{audio_id}.json"
+    return os.path.join(dir_root, name)
+
+
+def get_img(fname: str) -> str:
+    return get_support_file(fname, "images")
+
+
+def get_json(fname: str) -> str:
+    return get_support_file(fname, "json")
 
 
 def get_info(fname: str) -> Tuple[str, str, str]:
-    info = re.search(r"(normal|anomaly)_id_(\d{2})_(\d{8})", fname)
+    info = re.search(r"(normal|anomaly)_id_(\d{2})_\d{4}(\d{4})", fname)
     label, machine_id, audio_id = info.groups()
     return label, machine_id, audio_id
