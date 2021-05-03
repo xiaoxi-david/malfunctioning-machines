@@ -1,9 +1,10 @@
-pandas
-matplotlib
-wordcloud
+pandas == 1.2.*
+matplotlib == 3.4.*
+wordcloud == 1.8.*
 ipykernel
-tensorflow
-tensorflow-datasets
-pydub
-librosa
-kapre
+tensorflow == 2.4.*
+tensorflow-datasets == 4.2.*
+pydub == 0.25.* 
+librosa == 0.8.*
+kapre == 0.3.*
+plotnine == 0.8.*
