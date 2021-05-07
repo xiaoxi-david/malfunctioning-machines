@@ -44,4 +44,6 @@ You can run the docker compose files with [VS Code](https://code.visualstudio.co
 
 After you launch the containers, Docker will show the address for the Jupyter notebooks and the Streamlit web.
 
-**NOTE:** The Streamlit app needs some files that the notebook *Files-for-Streamlit-app* creates.
+**NOTE:** The Streamlit app needs some files. You can run the notebook *Files-for-Streamlit-app* to create them or download them from [here](https://drive.google.com/file/d/1kCGUZY6ZG9asS1vIIKR88OTFa-RSZueZ/view?usp=sharing). 
+
+If you download them, you need to unzip the file you download in the frontend folder (production/frontend) to create a folder (store) that has three folders inside (audios, images, json).
