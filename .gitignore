@@ -23,10 +23,12 @@ dmypy.json
 
 # dataset
 dataset/
+data/
 
 # VS Code settings
 .vscode/
 
 logs/
+tmp/
 
 store/

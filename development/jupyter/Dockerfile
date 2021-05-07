@@ -13,6 +13,7 @@ RUN pip install jupyter \
     tensorflow-datasets \
     pydub \
     librosa \
-    kapre
+    kapre \
+    plotnine
 
 WORKDIR /notebooks
