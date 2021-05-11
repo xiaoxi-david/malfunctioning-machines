@@ -6,14 +6,12 @@ from glob import glob
 
 def get_train_files(machine_id: str) -> List[str]:
     fname_lst = glob(
-        os.path.join(
-            "..", "store", "audios", "train", f"normal_id_{machine_id}_*"
-        )
+        os.path.join("..", "store", "audios", "train", f"normal_id_{machine_id}_*")
     )
     return fname_lst[:8]
 
 
-def get_test_files() -> List[str]:  # ? Not used yet
+def get_test_files() -> List[str]:
     fname_lst = []
     for machine_id in ["00", "02", "04", "06"]:
         for label in ["normal", "anomaly"]:

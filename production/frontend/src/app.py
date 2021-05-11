@@ -33,9 +33,7 @@ with left:
     st.subheader("Test audio")
     test_fnames = utils.get_test_files()
     test_choices = list(range(len(test_fnames)))
-    test_idx = st.select_slider(
-        "Choose another audio", test_choices, key="test"
-    )
+    test_idx = st.select_slider("Choose another audio", test_choices, key="test")
     test_file = test_fnames[test_idx]
     label, machine_id, audio_id = utils.get_info(test_file)
 
@@ -52,9 +50,7 @@ with right:
     train_fnames = utils.get_train_files(machine_id)
     # st.write(train_fnames)
     train_choices = list(range(len(train_fnames)))
-    train_idx = st.select_slider(
-        "Choose another audio", train_choices, key="train"
-    )
+    train_idx = st.select_slider("Choose another audio", train_choices, key="train")
     train_file = train_fnames[train_idx]
 
     audio_file = open(train_file, "rb")
@@ -121,6 +117,6 @@ with st.beta_expander("Explanation"):
             prob = 1 - server_output[0][0]
         elif prediction == "anomaly":
             prob = server_output[0][0]
-        st.write(f"Model predicts {prediction} with a probability of {prob}")
+        st.write(f"Model predicts {prediction} with a probability of {100*prob:.2f}%")
     else:
         winner.text("Choose")
