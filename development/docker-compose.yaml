@@ -9,6 +9,8 @@ services:
     volumes:
       - ./jupyter/notebooks:/notebooks
       - ./jupyter/dataset:/dataset
+      - ./jupyter/figures:/figures
+      - ./jupyter/audio:/audio
     command: 
       [
         "jupyter",
@@ -20,7 +22,7 @@ services:
       ]
 
   tensorboard:
-    image: tensorboard
+    container_name: tensorboard
     build: ./tensorboard
     ports:
         - 6006:6006
