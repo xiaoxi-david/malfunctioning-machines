@@ -17,9 +17,10 @@ st.set_page_config(
 
 st.title("Human vs computer")
 st.write(
-    "Can you detect anomaly sounds in malfunctioning \
+    "Can you detect anomalous sounds in malfunctioning \
     industrial machines better than a computer?"
 )
+st.write("Test yourself with industrial pumps.")
 
 st.header("Step 1: Choose computer model")
 model = st.selectbox(
@@ -28,6 +29,9 @@ model = st.selectbox(
 )
 
 st.header("Step 2: Train yourself")
+st.write("A. Choose one audio from the left")
+st.write("B. Train yourself listening to normal audios from the same machine (right).")
+st.write("You can compare import audio feature between audio samples.")
 left, right = st.beta_columns(2)
 with left:
     st.subheader("Test audio")
@@ -46,9 +50,8 @@ with left:
         st.image(test_img)
 
 with right:
-    st.subheader("Train audio")
+    st.subheader("Train audios")
     train_fnames = utils.get_train_files(machine_id)
-    # st.write(train_fnames)
     train_choices = list(range(len(train_fnames)))
     train_idx = st.select_slider("Choose another audio", train_choices, key="train")
     train_file = train_fnames[train_idx]
