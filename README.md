@@ -1,4 +1,4 @@
-# Anomaly sound detection in pumps
+# Anomalous sound detection in pumps
 
 ## Introduction
 
