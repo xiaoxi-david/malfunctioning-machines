@@ -1,0 +1,21 @@
+type,feature,machine,roc-auc
+supervised,spectrogram,00,0.6569
+supervised,spectrogram,02,0.9688
+supervised,spectrogram,04,0.875
+supervised,spectrogram,06,0.8333
+supervised,Mel-spectrogram,00,0.8235
+supervised,Mel-spectrogram,02,0.9375
+supervised,Mel-spectrogram,04,0.8333
+supervised,Mel-spectrogram,06,0.7708
+semi-supervised,spectral centroid,00,0.4805
+semi-supervised,spectral centroid,02,0.4936
+semi-supervised,spectral centroid,04,0.485
+semi-supervised,spectral centroid,06,0.4934
+semi-supervised,log Mel-spectrogram (Challenge),00,0.5209
+semi-supervised,log Mel-spectrogram (Challenge),02,0.5131
+semi-supervised,log Mel-spectrogram (Challenge),04,0.515
+semi-supervised,log Mel-spectrogram (Challenge),06,0.5176
+semi-supervised,log Mel-spectrogram (MIMII),00,0.5473
+semi-supervised,log Mel-spectrogram (MIMII),02,0.5266
+semi-supervised,log Mel-spectrogram (MIMII),04,0.485
+semi-supervised,log Mel-spectrogram (MIMII),06,0.4928
