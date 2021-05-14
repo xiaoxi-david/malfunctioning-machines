@@ -28,7 +28,6 @@ data/
 # VS Code settings
 .vscode/
 
-logs/
 tmp/
 
 store/
